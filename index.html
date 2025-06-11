@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ABBAS SHAIKH</title>
+  <link rel="icon" type="image/png" href="cropped_image (1).png">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #111;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3em;
+      z-index: 9999;
+      animation: splashFadeOut 1s ease forwards;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes splashFadeOut {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(100px);
+        visibility: hidden;
+      }
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #222;
+      padding-top: 100px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #333;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 120px;
+      height: 120px;
+      background-color: #111;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1100;
+      transition: all 0.3s ease;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    .logo.shrink {
+      width: 70px;
+      height: 70px;
+      top: 20px;
+      left: 20px;
+    }
+
+    .content {
+      margin-left: 0;
+      padding: 80px 40px 40px 40px;
+      transition: margin-left 0.3s;
+      opacity: 0;
+      margin-top: 15rem;
+      transform: translateY(50px);
+      animation: contentFadeIn 1s ease forwards;
+      animation-delay: 2s;
+    }
+
+
+    @keyframes contentFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .image-container {
+      position: absolute;
+      top: 10px;
+      right: 180px;
+      width: 450px;
+      border-radius: 30px;
+      overflow: hidden;
+      margin-top: -5rem;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .image-container img.top-right-img {
+      width: 100%;
+      height: auto;
+      transition: filter 0.3s ease;
+      display: block;
+    }
+
+    .image-container:hover .top-right-img {
+      filter: blur(5px);
+    }
+
+    .overlay-icons {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      flex-direction: row;
+      gap: 25px;
+      z-index: 10;
+    }
+
+    .image-container:hover .overlay-icons {
+      display: flex;
+    }
+
+    .overlay-icons a {
+      color: #fff;
+      font-size: 40px;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .overlay-icons a:hover {
+      transform: scale(1.2);
+      color: #281df2;
+    }
+
+    .details {
+      margin-top: -8rem;
+      max-width: 600px;
+      animation: fadeInUp 1s ease;
+
+    }
+.details h1{
+    font-size: 5rem;
+}
+.details p{
+    font-size: 1.2rem;
+}
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .details span {
+      display: inline-block;
+      transition: transform 0.3s, color 0.3s;
+      cursor: default;
+    }
+
+    .details span:hover {
+      color:#281df2;
+      transform: scale(1.2);
+    }
+
+    .active-sidebar {
+      left: 0;
+    }
+
+    .active-content {
+      margin-left: 250px;
+    }
+    .about-me,
+.skills {
+  margin-top: 60px;
+  padding: 20px 0;
+}
+
+.about-me h2,
+.skills h2 {
+  font-size: 4.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #f2f4f5;
+}
+
+.about-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.about-box {
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.about-box h3 {
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #f0f0f0;
+}
+
+.about-box ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.about-box li {
+  margin-bottom: 8px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+}
+
+.skill-card {
+  background: #222;
+  padding: 15px;
+  text-align: center;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.skill-card:hover {
+  transform: scale(1.1);
+  background: #1da1f2;
+  color: #000;
+}
+.scroll-section1 {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+      gap: 22rem;
+    }
+
+    .image-cards {
+      width: 400px;
+      height: 500px;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.6s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transform-style: preserve-3d;
+      z-index: 0;
+    }
+
+    .card.center {
+      z-index: 3;
+      transform: translateX(0) scale(1.1);
+    }
+
+    .card.left {
+      z-index: 2;
+      transform: translateX(-60%) scale(0.9);
+      opacity: 0.7;
+    }
+
+    .card.right {
+      z-index: 2;
+      transform: translateX(60%) scale(0.9);
+      opacity: 0.7;
+    }
+    .scroll-section2 {
+     margin-top: -1rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+      gap: 22rem;
+    }
+
+    .image-cards {
+      width: 400px;
+      height: 400px;
+      width: 500px;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.6s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transform-style: preserve-3d;
+      z-index: 0;
+    }
+
+    .card.center {
+      z-index: 3;
+      transform: translateX(0) scale(1.1);
+    }
+
+    .card.left {
+      z-index: 2;
+      transform: translateX(-60%) scale(0.9);
+      opacity: 0.7;
+    }
+
+    .card.right {
+      z-index: 2;
+      transform: translateX(60%) scale(0.9);
+      opacity: 0.7;
+    }
+
+/* Grid for project cards */
+.project-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Project card styles (already present) */
+.project-card {
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  overflow: hidden;
+  text-align: center;
+  margin: 20px;
+  background: #060606;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+/* Hover effect */
+.project-card:hover {
+  transform: scale(1.05);
+}
+
+/* Image inside card */
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Button styling */
+.project-card button {
+  margin: 10px;
+  padding: 8px 16px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Text color */
+.project-card p {
+  color: #fbfafa;
+}
+
+/* Animation: card flip + fade */
+.card-animate-out {
+  animation: cardFlipOut 0.6s forwards;
+}
+
+@keyframes cardFlipOut {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+    transform-origin: top left;
+  }
+  100% {
+    transform: rotate(15deg) scale(0.1) translate(300px, 300px);
+    opacity: 0;
+  }
+}
+
+/* Modal styling (same as yours) */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+}
+
+.modal-content {
+  background: #080808;
+  padding: 20px;
+  width: 80%;
+  margin: 40px auto;
+  position: relative;
+  border-radius: 10px;
+  max-height: 80vh;
+  overflow-y: auto;
+  align-items: center;
+}
+
+.modal-content h2 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Screenshots slider */
+.slider img {
+  width: 40%;
+  max-height: 300px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Download button */
+.download-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px;
+  background: #28a745;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+/* Project main title */
+.projectmain {
+  font-size: 3.5rem;
+  text-align: center;
+}
+/* Contact Me Section */
+.contact-section {
+  padding: 60px 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #faf9f9;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.contact-image img {
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info {
+  max-width: 400px;
+  font-size: 1.1rem;
+  color: #faf8f8;
+}
+
+.contact-info p {
+  margin: 10px 0;
+}
+
+.contact-info a {
+  color: #0c0c0c;
+  text-decoration: none;
+}
+
+.download-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #f8f9f8;
+  color: rgb(6, 5, 5);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #38398e;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <div id="splash">Hey Guys! I'm Abbas Nooruddin Shaikh. Welcome to my profile</div>
+
+  <div class="logo" id="logo" onclick="toggleSidebar()">
+    <img src="image 2.jpg" alt="Logo">
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <a href="#">HOME</a>
+    <a href="#">ABOUT</a>
+    <a href="#">SKILLS</a>
+    <a href="#">PROJECTS</a>
+    <a href="#">CONTACT</a>
+  </div>
+
+  <div id="mainContent" class="content">
+    <div class="image-container">
+      <img src="local_image.jpg.jpg" alt="Top Right" class="top-right-img">
+      <div class="overlay-icons">
+        <a href="https://www.instagram.com/abbasshaikh_16/?hl=en" target="_blank">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+        <a href="https://www.linkedin.com/in/abbas-shaikh-33398b324/" target="_blank">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+        <a href="https://github.com/abbasshaikh43" target="_blank">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+        <a href="https://twitter.com/yourprofile" target="_blank">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+      </div>
+    </div>
+
+    <div class="details">
+      <h1 id="highlight-h1">Hello, I'm Abbas Shaikh</h1>
+      <br>
+      <h2 id="highlight-h2">I'm Web Developer & Web Designer</h2>
+      <br>
+      <p id="highlight-text">
+        I'm a passionate and creative web developer with a strong interest in both design and development.
+        I thrive on building clean, responsive, and user-friendly websites that blend functionality with visual appeal.
+        As a results-driven professional, I am committed to continuous learning and growth, always aiming to improve user
+        experience and product performance through innovative and effective solutions.
+      </p>
+    </div>
+  </div>
+
+
+<section class="about-me">
+    <h2>About Me</h2>
+  
+    <div class="scroll-section1">
+      <div class="image-cards">
+        <img src="backliwal.jpg" class="card center" onclick="showImage(0)">
+        <img src="nmmc2.jpg" class="card left" onclick="showImage(1)">
+        <img src="nmmc1.jpg" class="card right" onclick="showImage(2)">
+      </div>
+  
+      <div class="about-box">
+        <h3>🎓 Education</h3>
+        <ul>
+          <li><strong>Bachelor of Computer Applications (BCA)</strong> - Bakliwal Foundation College Vashi (2022 - 2025)</li>
+          <li><strong>Senior Secondary (XII)</strong> - Motilal Jhunjhunwala College, Vashi (<b>68.33%</b>)</li>
+          <li><strong>Secondary (X)</strong> - N.M.M.C. Khairne Gaon (<b>79.80%</b>)</li>
+        </ul>
+        <br>
+        <div class="skilll">
+            <h4>Skills</h4>
+ <ul>
+ <li>HTML</li> 
+ <li>CSS</li>
+ <li>JavaScript</li> 
+ <li>Python</li>
+ <li>PHP</li>
+ <li>MySql</li>
+
+</ul>
+</div>
+      </div>
+    </div>
+  
+    <div class="scroll-section2">
+      <div class="about-box">
+        <h3>🏆 Achievements</h3>
+        <br>
+        <ul>
+          <li>Built a fully responsive Rent Robot site as a solo project</li>
+          <li>Achieved 100+ positive reviews on my CycleWala Project</li>
+          <li>Completed 6 Responsive Projects</li>
+        </ul>
+      </div>
+  
+      <div class="image-cards">
+        <img src="CYCLE WALA - Google Chrome 29-01-2025 19_53_21.png" class="card center" onclick="showImage2(0)">
+        <img src="Screenshot 2025-05-01 034314.png" class="card left" onclick="showImage2(1)">
+        <img src="Screenshot 2025-05-01 034344.png" class="card right" onclick="showImage2(2)">
+      </div>
+    </div>
+  </section>
+  <div class="projectmain">
+    <h1>My Projects</h1>
+  </div>
+<!-- Container for all project cards -->
+<div class="project-container">
+
+  <!-- Project 1: Movie Download Website -->
+  <div class="project-card">
+    <img src="movies.png" alt="Project Thumbnail" />
+    <h3>Movie Download Website Page</h3>
+    <p>Using HTML, CSS, and JavaScript to create this project</p>
+    <button onclick="openModal('project1')">Source Code</button>
+  </div>
+  <div class="modal" id="project1">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project1')">&times;</span>
+      <h2>Movie Download Webpage</h2>
+      <div style="display: flex; justify-content: center;">
+        <video width="60%" controls>
+          <source src="MOVIES DOWNLOAD - Personal - Microsoft​ Edge 2025-05-01 10-29-25.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <p>Project: Anicare Movie Download Portal A modern, responsive web portal for browsing and downloading the latest and trending movies, featuring:
+
+        Animated Navigation & Language Selector A clean, top-fixed navbar with “HOME,” “MOVIES,” and “ABOUT US” links that slide into view, plus a dropdown to switch languages seamlessly.
+        
+        Search Functionality A custom search bar letting users quickly filter movie titles.
+        
+        Dynamic Movie Listing • New Releases & Trending Sections: Movie posters displayed as interactive cards. • Download Buttons: One-click download triggers for each title.
+        
+        Detail Modal with Carousel Clicking a movie card opens a full-screen modal showcasing:
+        
+        Large movie poster Title and synopsis “View Trailer” link Prev/Next arrows to browse details without exiting “Download” button
+        
+        Engaging Hero Slider At the top, a full-width carousel highlights featured blockbusters with left/right arrow controls for smooth transitions.
+        
+        Contact & Footer A simple footer with your contact number and email, reinforcing professionalism and making it easy for recruiters to reach out. Tech & Animations Vanilla HTML, CSS, and JavaScript CSS3 keyframe animations for splash screens, modals, and sliders Flexbox/Grid for responsive layouts Clean, mobile-friendly design</p>
+        <div style="text-align: center;">
+          <div style="font-size: 3.5rem;">
+          
+      <h3>Screenshots of Webpage</h3>
+        
+    </div>
+  </div>
+      <div class="slider">
+        <img src="movies.png" />
+        <img src="movie2.png" />
+        <img src="movies3.png" />
+        <img src="movies 4.png" />
+      </div>
+      <div style="text-align: center;">
+        <a href="https://github.com/abbasshaikh43/Movies-Download" class="download-btn">Download Source Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 2: Tourism Website -->
+  <div class="project-card">
+    <img src="tourism.png" alt="Project Thumbnail" />
+    <h3>Tourism Website</h3>
+    <p>HTML, CSS, JavaScript with animated image slider</p>
+    <button onclick="openModal('project2')">Source Code</button>
+  </div>
+  <div class="modal" id="project2">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project2')">&times;</span>
+      <h2>Personal Portfolio Website</h2>
+      <div style="display: flex; justify-content: center;">
+        <video width="60%" controls>
+          <source src="portfolio-preview.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <p>A personal portfolio with animated sections like splash screen, sidebar, skills, achievements, and modal popups.</p>
+      <div class="slider">
+        <img src="portfolio.png" />
+        <img src="portfolio2.png" />
+      </div>
+      <div style="text-align: center;">
+        <a href="https://github.com/abbasshaikh43/Portfolio" class="download-btn">Download Source Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 3: Cycle Wala Website -->
+  <div class="project-card">
+    <img src="CYCLE WALA - Google Chrome 29-01-2025 19_53_21.png" alt="Project Thumbnail" />
+    <h3>Cycle Wala Website</h3>
+    <p>Cycle Wala Website Use for Buy Cycles</p>
+    <button onclick="openModal('project3')">Source Code</button>
+  </div>
+  <div class="modal" id="project3">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project3')">&times;</span>
+      <h2>Cycle Wala Website</h2>
+      <div style="display: flex; justify-content: center;">
+        <video width="60%" controls>
+          <source src="cyclewala-preview.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <p>A modern responsive cycle ecommerce website for viewing and buying bicycles with cart features and filters.</p>
+      <div class="slider">
+        <img src="cyclewala1.png" />
+        <img src="cyclewala2.png" />
+      </div>
+      <div style="text-align: center;">
+        <a href="https://github.com/abbasshaikh43/CycleWala" class="download-btn">Download Source Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 4: Animal Care Website -->
+  <div class="project-card">
+    <img src="anicare.png" alt="Project Thumbnail" />
+    <h3>Animal Care Website</h3>
+    <p>Animal Care website Use for get knowledge about Animals</p>
+    <button onclick="openModal('project4')">Source Code</button>
+  </div>
+  <div class="modal" id="project4">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project4')">&times;</span>
+      <h2>AniCare – Animal Care Webpage</h2>
+      <div style="display: flex; justify-content: center;">
+        <video width="60%" controls>
+          <source src="anicare-preview.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <p>Features include animal cards with care instructions, video tutorials, search filters, and section-wise info modals.</p>
+      <div class="slider">
+        <img src="anicare.png" />
+        <img src="anicare2.png" />
+      </div>
+      <div style="text-align: center;">
+        <a href="https://github.com/abbasshaikh43/AniCare" class="download-btn">Download Source Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 5: Calculator -->
+  <div class="project-card">
+    <img src="calculator.png" alt="Project Thumbnail" />
+    <h3>Calculator</h3>
+    <p>Animated Calculator background</p>
+    <button onclick="openModal('project5')">Source Code</button>
+  </div>
+  <div class="modal" id="project5">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project5')">&times;</span>
+      <h2>Calculator</h2>
+      <div style="display: flex; justify-content: center;">
+        <video width="60%" controls>
+          <source src="calculator-demo.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <p>Stylish and functional calculator with animated background and responsive layout using pure HTML, CSS, and JavaScript.</p>
+      <div class="slider">
+        <img src="calculator.png" />
+        <img src="calculator2.png" />
+      </div>
+      <div style="text-align: center;">
+        <a href="https://github.com/abbasshaikh43/Calculator" class="download-btn">Download Source Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 6: Rent Robot & Drone -->
+  <div class="project-card">
+    <img src="robot.png" alt="Project Thumbnail" />
+    <h3>Rent Robot & Drone</h3>
+    <p>Rent any robot and drone at this webpage</p>
+    <button onclick="openModal('project6')">Source Code</button>
+  </div>
+  <div class="modal" id="project6">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project6')">&times;</span>
+      <h2>Rent Robot & Drone Website</h2>
+      <div style="display: flex; justify-content: center;">
+        <video width="60%" controls>
+          <source src="robot-preview.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <p>Website for renting various types of robots and drones. Includes rental filters, pricing details, and booking system.</p>
+      <div class="slider">
+        <img src="robot.png" />
+        <img src="robot2.png" />
+      </div>
+      <div style="text-align: center;">
+        <a href="https://github.com/abbasshaikh43/RobotRental" class="download-btn">Download Source Code</a>
+      </div>
+    </div>
+  </div>
+  <div class="project-card">
+    <img src="gym.png" alt="Project Thumbnail" />
+    <h3>GYM GURU WEBSITE</h3>
+    <p>GYM GURU website use for getting online classes of fitness</p>
+    <button onclick="openModal('project7')">Source Code</button>
+  </div>
+  <div class="modal" id="project7">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project7')">&times;</span>
+      <h2>Rent Robot & Drone Website</h2>
+      <div style="display: flex; justify-content: center;">
+        <video width="60%" controls>
+          <source src="robot-preview.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <p>Website for renting various types of robots and drones. Includes rental filters, pricing details, and booking system.</p>
+      <div class="slider">
+        <img src="robot.png" />
+        <img src="robot2.png" />
+      </div>
+      <div style="text-align: center;">
+        <a href="https://github.com/abbasshaikh43/RobotRental" class="download-btn">Download Source Code</a>
+      </div>
+    </div>
+  </div>
+  <!--project8-->
+  <div class="project-card">
+    <img src="sneaker.png" alt="Project Thumbnail" />
+    <h3>SneakyLand</h3>
+    <p>Buy Any Types of Sneaker at SneakyLand</p>
+    <button onclick="openModal('project8')">Source Code</button>
+  </div>
+  <div class="modal" id="project8">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project8')">&times;</span>
+      <h2>Rent Robot & Drone Website</h2>
+      <div style="display: flex; justify-content: center;">
+        <video width="60%" controls>
+          <source src="robot-preview.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <p>Website for renting various types of robots and drones. Includes rental filters, pricing details, and booking system.</p>
+      <div class="slider">
+        <img src="robot.png" />
+        <img src="robot2.png" />
+      </div>
+      <div style="text-align: center;">
+        <a href="https://github.com/abbasshaikh43/RobotRental" class="download-btn">Download Source Code</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- Contact Me Section -->
+<section id="contact" class="contact-section">
+  <h2 class="section-title">Contact Me</h2>
+
+  <div class="contact-container">
+    <!-- Image -->
+    <div class="contact-image">
+      <img src="imag1.jpg" alt="Contact" />
+    </div>
+
+    <!-- Info -->
+    <div class="contact-info">
+      <p><strong>Email:</strong> shaikhabbas4231@gmail.com</a></p>
+      <p><strong>Phone:</strong> +91 8291369731</p>
+      <p><strong>Address:</strong> Koprigaon , Navi Mumbai -400703</p>
+      <a href="RESUME.pdf" download class="download-btn">Download Resume</a>
+    </div>
+  </div>
+</section>
+
+
+  <footer style="text-align:center; padding: 20px; background:#111; color:#aaa;">
+    <p>© 2025 Abbas Shaikh. All rights reserved.</p>
+    <div style="margin-top:10px;">
+      <a href="https://github.com/yourprofile" style="color:white; margin:0 10px;"><ion-icon name="logo-github"></ion-icon></a>
+      <a href="https://linkedin.com/in/yourprofile" style="color:white; margin:0 10px;"><ion-icon name="logo-linkedin"></ion-icon></a>
+    </div>
+  </footer>
+     
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const content = document.getElementById("mainContent");
+      const logo = document.getElementById("logo");
+
+      const isOpen = sidebar.classList.toggle("active-sidebar");
+      content.classList.toggle("active-content");
+
+      if (isOpen) {
+        logo.classList.add("shrink");
+      } else {
+        logo.classList.remove("shrink");
+      }
+    }
+
+    function wrapWords(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        const words = element.innerText.split(" ");
+        element.innerHTML = words.map(word => `<span>${word}</span>`).join(" ");
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      wrapWords("highlight-h1");
+      wrapWords("highlight-h2");
+      wrapWords("highlight-text");
+    });
+    const images = document.querySelectorAll(".card");
+let currentIndex = 0;
+
+function showImage(index) {
+  currentIndex = index;
+
+  images.forEach((img, i) => {
+    img.classList.remove("center", "left", "right");
+  });
+
+  images[index].classList.add("center");
+
+  const leftIndex = (index + 1) % images.length;
+  const rightIndex = (index + 2) % images.length;
+
+  images[leftIndex].classList.add("left");
+  images[rightIndex].classList.add("right");
+}
+
+showImage(0);
+function setupImageCarousel(containerSelector) {
+  const container = document.querySelector(containerSelector);
+  const images = container.querySelectorAll(".card");
+  let currentIndex = 0;
+
+  function showImage(index) {
+    currentIndex = index;
+    images.forEach((img) => img.classList.remove("center", "left", "right"));
+
+    images[index].classList.add("center");
+    images[(index + 1) % images.length].classList.add("left");
+    images[(index + 2) % images.length].classList.add("right");
+  }
+
+  images.forEach((img, i) => {
+    img.onclick = () => showImage(i);
+  });
+
+  showImage(0);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  wrapWords("highlight-h1");
+  wrapWords("highlight-h2");
+  wrapWords("highlight-text");
+
+  setupImageCarousel(".scroll-section1 .image-cards");
+  setupImageCarousel(".scroll-section2 .image-cards");
+});
+  function openModal(id) {
+    document.getElementById(id).style.display = 'block';
+  }
+  
+
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+  function openModal(id) {
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+  function openModal(id) {
+    const card = event.target.closest(".project-card");
+
+    card.classList.add("card-animate-out");
+
+    setTimeout(() => {
+      document.getElementById(id).style.display = "block";
+      card.classList.remove("card-animate-out"); // Reset for next time
+    }, 600); // Wait for animation to complete
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+  }
+
+
+  </script>
+
+</body>
+</html>
